@@ -3,7 +3,7 @@ using ExercicioFila;
 
 Fila filaNormal = new Fila();
 Fila filaPrioritaria = new Fila();
-int opcao, prioritario, contador = 0, contadorR = 0;
+int opcao, prioritario, contador = 0;
 
 do
 {
@@ -76,12 +76,11 @@ do
             contador++;
             break;
         case 5:
-            contadorR = contador; // faz sentido isso?
             if (filaPrioritaria.FilaVazia() && filaNormal.FilaVazia())
             {
                 Console.WriteLine("\nA fila está vazia, não há ninguém para remover!");
             }
-            else if (contadorR % 3 != 0 || filaPrioritaria.FilaVazia() && !filaNormal.FilaVazia())
+            else if (contador % 3 != 0 || filaPrioritaria.FilaVazia() && !filaNormal.FilaVazia())
             {
                 filaNormal.AtenderCliente();
                 Console.WriteLine("\nCliente não prioritário removido!");
@@ -91,7 +90,7 @@ do
                 filaPrioritaria.AtenderCliente();
                 Console.WriteLine("\nCliente prioritário removido!");
             }
-            contadorR++;
+            contador++;
             break;
         default:
             Console.WriteLine("\nEscolha uma opção válida entre 1 e 6!");
