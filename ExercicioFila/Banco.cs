@@ -66,13 +66,14 @@ do
             {
                 filaNormal.AtenderCliente();
                 Console.WriteLine("\nCliente não prioritário atendido!");
+                contador++;
             }
             else
             {
                 filaPrioritaria.AtenderCliente();
                 Console.WriteLine("\nCliente prioritário atendido!");
+                contador++;
             }
-            contador++;
             break;
         case 5:
             if (filaPrioritaria.FilaVazia() && filaNormal.FilaVazia())
