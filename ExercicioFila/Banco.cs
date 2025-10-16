@@ -94,6 +94,7 @@ do
             contadorR++;
             break;
         default:
+            Console.WriteLine("\nEscolha uma opção válida entre 1 e 6!");
             break;
     }
 } while (opcao != 6);
