@@ -3,7 +3,7 @@ using ExercicioFila;
 
 Fila filaNormal = new Fila();
 Fila filaPrioritaria = new Fila();
-int opcao, prioritario;
+int opcao, prioritario, contador = 0;
 
 do
 {
@@ -20,7 +20,7 @@ do
         case 1:
             Cliente cliente = new Cliente();
 
-            Console.Write("Informe o nome do cliente: ");
+            Console.Write("\nInforme o nome do cliente: ");
             cliente.setNome(Console.ReadLine()!);
             Console.Write("Informe a idade do cliente: ");
             cliente.setIdade(Convert.ToInt32(Console.ReadLine()));
@@ -31,7 +31,7 @@ do
                 prioritario = Convert.ToInt32(Console.ReadLine());
             } while (prioritario != 1 && prioritario != 2);
 
-            if(prioritario == 1)
+            if (prioritario == 1)
             {
                 //cliente.setPrioritario = true;
                 filaPrioritaria.AdicionarClienteNaFila(cliente);
@@ -41,17 +41,17 @@ do
                 //cliente.setPrioritario = true;
                 filaNormal.AdicionarClienteNaFila(cliente);
             }
-                break;
+            break;
         case 2:
-            if(filaNormal.FilaVazia() == true && filaPrioritaria.FilaVazia() == true)
+            if (filaNormal.FilaVazia() == true && filaPrioritaria.FilaVazia() == true)
             {
-                Console.WriteLine("A fila está vazia!");
+                Console.WriteLine("\nA fila está vazia!");
             }
             else
             {
-                Console.WriteLine("A fila não está vazia");
+                Console.WriteLine("\nA fila não está vazia");
             }
-                break;
+            break;
         case 3:
             Console.WriteLine("Fila não prioritária: \n");
             filaNormal.MostrarFila();
@@ -59,25 +59,32 @@ do
             filaPrioritaria.MostrarFila();
             break;
         case 4:
-            if (filaNormal.TamanhoFila() % 3 >= 0 && filaNormal.TamanhoFila() % 3 <=2)
+            if (filaPrioritaria.FilaVazia() && filaNormal.FilaVazia())
             {
-                filaNormal.AtenderCliente();
-                Console.WriteLine("Cliente não prioritário atendido!");
-            }else{
-                filaPrioritaria.AtenderCliente();
-                Console.WriteLine("Cliente prioritário atendido!");
+                Console.WriteLine("\nA fila está vazia, não há ninguém para atender!");
             }
-                break;
-        case 5:
-            if (filaNormal.TamanhoFila() % 3 >= 0 && filaNormal.TamanhoFila() % 3 <= 2)
+            else if (contador % 3 != 0 || filaPrioritaria.FilaVazia())
             {
                 filaNormal.AtenderCliente();
-                Console.WriteLine("Cliente não prioritário removido!");
+                Console.WriteLine("\nCliente não prioritário atendido!");
             }
             else
             {
                 filaPrioritaria.AtenderCliente();
-                Console.WriteLine("Cliente prioritário removido!");
+                Console.WriteLine("\nCliente prioritário atendido!");
+            }
+            contador++;
+            break;
+        case 5:
+            if (filaNormal.TamanhoFila() % 3 >= 0 && filaNormal.TamanhoFila() % 3 <= 2)
+            {
+                filaNormal.AtenderCliente();
+                Console.WriteLine("\nCliente não prioritário removido!");
+            }
+            else
+            {
+                filaPrioritaria.AtenderCliente();
+                Console.WriteLine("\nCliente prioritário removido!");
             }
             break;
         default:
@@ -85,4 +92,4 @@ do
     }
 } while (opcao != 6);
 
-Console.WriteLine("Saindo...");
+Console.WriteLine("Saindo...\n");
