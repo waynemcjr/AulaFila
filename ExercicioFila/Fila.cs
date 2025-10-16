@@ -4,18 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AulaFila
+namespace ExercicioFila
 {
     public class Fila
     {
 
-        private Pessoa head;
-        private Pessoa tail;
+        private Cliente head;
+        private Cliente tail;
 
         public void CriarFila()
         {
-            Pessoa head = null;
-            Pessoa tail = head;
+            Cliente head = null;
+            Cliente tail = head;
         }
 
         public bool FilaVazia()
@@ -26,7 +26,7 @@ namespace AulaFila
                 return false;
         }
 
-        public void InserirPessoa(Pessoa elemento)
+        public void AdicionarClienteNaFila(Cliente elemento)
         {
             if (FilaVazia())
             {
@@ -40,7 +40,7 @@ namespace AulaFila
             }
         }
 
-        public void RemoverPessoa()
+        public void AtenderCliente()
         {
             if (FilaVazia())
                 Console.WriteLine("Fila vazia!");
@@ -61,7 +61,7 @@ namespace AulaFila
             }
             else
             {
-                Pessoa aux = head;
+                Cliente aux = head;
                 while (aux != null)
                 {
                     contador++;
@@ -71,7 +71,7 @@ namespace AulaFila
             return contador;
         }
 
-        public void ImprimirFila()
+        public void MostrarFila()
         {
             if (FilaVazia())
             {
@@ -79,7 +79,7 @@ namespace AulaFila
             }
             else
             {
-                Pessoa aux = head;
+                Cliente aux = head;
                 while (aux != null)
                 {
                     Console.WriteLine(aux.Nome);
