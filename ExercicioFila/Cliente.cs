@@ -39,9 +39,9 @@ namespace ExercicioFila
             return this.Idade;
         }
 
-        public void setPrioritario(bool Prioritario)
+        public void EhPrioritario()
         {
-            this.Prioritario = Prioritario;
+            this.Prioritario = true;
         }
 
         public bool getPrioritario()

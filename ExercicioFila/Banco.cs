@@ -33,12 +33,11 @@ do
 
             if (prioritario == 1)
             {
-                //cliente.setPrioritario = true; // pq não funciona assim?
+                cliente.EhPrioritario();
                 filaPrioritaria.AdicionarClienteNaFila(cliente);
             }
             else
             {
-                //cliente.setPrioritario = true; // pq não funciona assim?
                 filaNormal.AdicionarClienteNaFila(cliente);
             }
             break;
