@@ -3,7 +3,7 @@ using ExercicioFila;
 
 Fila filaNormal = new Fila();
 Fila filaPrioritaria = new Fila();
-int opcao, prioritario, contador = 0;
+int opcao, prioritario, contador = 0, contadorR = 0;
 
 do
 {
@@ -33,12 +33,12 @@ do
 
             if (prioritario == 1)
             {
-                //cliente.setPrioritario = true;
+                //cliente.setPrioritario = true; // pq não funciona assim?
                 filaPrioritaria.AdicionarClienteNaFila(cliente);
             }
             else
             {
-                //cliente.setPrioritario = true;
+                //cliente.setPrioritario = true; // pq não funciona assim?
                 filaNormal.AdicionarClienteNaFila(cliente);
             }
             break;
@@ -63,7 +63,7 @@ do
             {
                 Console.WriteLine("\nA fila está vazia, não há ninguém para atender!");
             }
-            else if (contador % 3 != 0 || filaPrioritaria.FilaVazia())
+            else if (contador % 3 != 0 || filaPrioritaria.FilaVazia() && !filaNormal.FilaVazia())
             {
                 filaNormal.AtenderCliente();
                 Console.WriteLine("\nCliente não prioritário atendido!");
@@ -76,7 +76,12 @@ do
             contador++;
             break;
         case 5:
-            if (filaNormal.TamanhoFila() % 3 >= 0 && filaNormal.TamanhoFila() % 3 <= 2)
+            contadorR = contador; // faz sentido isso?
+            if (filaPrioritaria.FilaVazia() && filaNormal.FilaVazia())
+            {
+                Console.WriteLine("\nA fila está vazia, não há ninguém para remover!");
+            }
+            else if (contadorR % 3 != 0 || filaPrioritaria.FilaVazia() && !filaNormal.FilaVazia())
             {
                 filaNormal.AtenderCliente();
                 Console.WriteLine("\nCliente não prioritário removido!");
@@ -86,6 +91,7 @@ do
                 filaPrioritaria.AtenderCliente();
                 Console.WriteLine("\nCliente prioritário removido!");
             }
+            contadorR++;
             break;
         default:
             break;
